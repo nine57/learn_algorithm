@@ -26,16 +26,39 @@ Finn은 요즘 수학공부에 빠져 있습니다.<br>
 ---
 
 ## 문제 접근 (pseudocode)
-1. 
+1. 투 포인터로 해결해보자.
+2. 대신 리스트를 따로 만드는게 아니라 가상의 리스트로 생각!
 
 ---
 
 <br>
 
 ```python
-code 1
+def solution(n):
+    answer = 0
+    lt = 1
+    rt = 1
+    sum_number = 1
+
+    while True:
+        if sum_number < n:
+            rt += 1
+            if rt > n:
+                break
+            sum_number += rt
+        elif sum_number > n:
+            sum_number -= lt
+            lt += 1
+        else:
+            answer += 1
+            rt += 1
+            if rt > n:
+                break
+            sum_number += rt
+
+    return answer
 ```
-> 통과 답안 :
+> 통과 답안 : 정확도, 효율 OK, but while문 탈출 조건을 다시 걸어두는게 좋을 것 같다.
 
 <br>
 
@@ -45,6 +68,44 @@ code 1
 ### 다른 풀이
 
 ```python
-code 2
+def solution(n):
+    answer = 0
+    lt = 1
+    rt = 1
+    sum_number = 1
+
+    while rt<= n:
+        if sum_number < n:
+            rt += 1
+            sum_number += rt
+        elif sum_number > n:
+            sum_number -= lt
+            lt += 1
+        else:
+            answer += 1
+            rt += 1
+            sum_number += rt
+
+    return answer
 ```
-> 
+> 탈출조건을 while문 시작에 명시해줬다.<br>
+> 특정 케이스는 시간이 더 오래 걸렸지만, if문 확인이 줄어서 앞의 정답보다는 더 효율적인 코드로 보인다.
+
+<br>
+
+### 다른 풀이2
+
+```python
+def solution(num):
+    answer = 0
+    for i in range(1, num + 1):
+        s = 0
+        while s < num:
+            s += i
+            i += 1
+        if s == num:
+            answer += 1
+
+    return answer
+```
+> 코드는 간단해 보이나, 효율성 테스트에서 더 나쁜 결과가 나온다.
