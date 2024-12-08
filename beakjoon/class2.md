@@ -1,8 +1,70 @@
+### [2164](https://www.acmicpc.net/problem/2164)
+<details>
+<summary>풀이</summary>
+
+```python
+def func(origin, f):
+    Q = []
+    for num in origin:
+        if f:
+            pass
+        else:
+            Q.append(num)
+        f = not f
+    return Q, f
+n = int(input())
+flag = True
+Q = [num for num in range(1, n+1)]
+while len(Q) > 1:
+    Q, flag = func(Q, flag)
+print(Q[0])
+
+```
+</details>
+
+---
+
+### [1920](https://www.acmicpc.net/problem/1920)
+<details>
+<summary>풀이</summary>
+
+```python
+n = int(input())
+A = set(map(int, input().split()))
+m = int(input())
+for num in map(int, input().split()):
+    print(int(num in A))
+```
+</details>
+
+---
+
+### [11651](https://www.acmicpc.net/problem/11651)
+<details>
+<summary>풀이</summary>
+
+```python
+n = int(input())
+arr = [list(map(int, input().split())) for _ in range(n)]
+arr.sort(key = lambda x: (x[1], x[0]))
+for i, j in arr:
+    print(i, j)
+
+```
+</details>
+
+---
+
 ### [11650](https://www.acmicpc.net/problem/11650)
 <details>
 <summary>풀이</summary>
 
 ```python
+n = int(input())
+arr = [list(map(int, input().split())) for _ in range(n)]
+arr.sort(key = lambda x: (x[0], x[1]))
+for i, j in arr:
+    print(i, j)
 
 ```
 </details>
