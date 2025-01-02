@@ -1,3 +1,42 @@
+### [4949](https://www.acmicpc.net/problem/4949)
+<details>
+<summary>풀이</summary>
+
+```python
+while True:
+    txt = input()
+    checked = []
+    answer = "yes"
+    if txt == ".":
+        break
+    for char in txt:
+        if char == "(" or char == "[":
+            checked.append(char)
+        elif char == ")":
+            if len(checked) == 0:
+                answer = "no"
+                break
+            elif checked.pop() != "(":
+                answer = "no"
+                break
+        elif char == "]":
+            if len(checked) == 0:
+                answer = "no"
+                break
+            elif checked.pop() != "[":
+                answer = "no"
+                break
+        else:
+            continue
+
+    if len(checked) > 0:
+        answer = "no"
+    print(answer)
+```
+</details>
+
+---
+
 ### [2164](https://www.acmicpc.net/problem/2164)
 <details>
 <summary>풀이</summary>
